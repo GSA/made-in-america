@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "csvjson-csv2json": "^5.0.6",
-    "uswds": "~2.12.1"
+    "uswds": "~2.12.2"
   },
   "devDependencies": {
     "pa11y-ci": "^2.4.0",
