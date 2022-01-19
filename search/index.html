@@ -34,6 +34,9 @@ description: "Non-availability waivers, synopsis of waiver requests, buy America
   {% assign naics = waiver["North American Industry Classification System (NAICS)"] %}
   {% assign psc = waiver["Product Service Code (PSC)"] %}
   {% assign synopsis = waiver["Summary of Procurement"] %}
+  {% assign created = waiver["created"] %}
+  {% assign modified = waiver["modified"] %}
+  {% assign requestStatus = waiver["requestStatus"] %}
   {% assign waiver_rationale_summary = waiver["Waiver Rationale Summary"] %}
   {% assign information_issued = waiver["Was a sources sought or Request for Information issued?"] %}
   {% assign maximum_duration = waiver["Expected Maximum Duration of Requested Waiver"] %}
@@ -53,6 +56,9 @@ description: "Non-availability waivers, synopsis of waiver requests, buy America
     naics=naics
     psc=psc
     synopsis=synopsis
+    created=created
+    modified=modified
+    requestStatus=requestStatus
     waiver_rationale_summary=waiver_rationale_summary
     information_issued=information_issued
     maximum_duration=maximum_duration

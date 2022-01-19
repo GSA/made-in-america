@@ -15,6 +15,24 @@
         <span class="text-base-light text-italic">Pending Title</span>
         {% endif%}
       </p>
+      <p class="margin-top-3">
+        {% if requestStatus == 'Submitted' %}
+        Submitted:
+        <span class="margin-0 text-normal">
+          {{ include.created | date: "%B" }}
+          {{ include.created | date: "%d" | plus:'0' }}, 
+          {{ include.created | date: "%Y" }}
+        </span>
+        {% else %}
+        Reviewed:
+        <span class="margin-0 text-normal">
+          {{ include.modified | date: "%B" }}
+          {{ include.modified | date: "%d" | plus:'0' }}, 
+          {{ include.modified | date: "%Y" }}
+        </span>
+        {% endif%}
+
+      </p>
     </div>
     <div class="desktop:grid-col-4 desktop:margin-right-4 margin-y-1 ">
       <p class="margin-0"><b>Contracting Office Agency Name</b></p>
