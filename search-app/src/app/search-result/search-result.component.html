@@ -1,0 +1,285 @@
+<div class="margin-top-1">
+  <usa-accordion [headerLevel]="2" [singleSelect]="true" activeIds="id">
+    <usa-accordion-item *ngFor="let waiverData of data">
+      <ng-template UsaAccordionHeader>
+        <div
+          class="grid-row flex-row padding-x-3 padding-y-1"
+          data-test="accordion-header"
+        >
+          <div class="desktop:grid-col-2 desktop:margin-right-4 margin-y-1">
+            <p class="margin-0"><b>Procurement Title</b></p>
+            <p
+              [ngClass]="
+                waiverData.data.procurementTitle === ''
+                  ? 'margin-0 text-base-light text-italic'
+                  : 'margin-0 text-normal'
+              "
+              data-test="procurement-title"
+            >
+              {{
+                waiverData.data.procurementTitle != ''
+                  ? waiverData.data.procurementTitle
+                  : 'Pending Title'
+              }}
+            </p>
+          </div>
+          <div class="desktop:grid-col-3 desktop:margin-right-4 margin-y-1">
+            <p class="margin-0"><b>Contracting Department</b></p>
+            <p class="margin-0 text-normal">
+              {{ waiverData.data.contractingOfficeAgencyName }}
+            </p>
+          </div>
+          <div class="desktop:grid-col-4 margin-y-1">
+            <p class="margin-0"><b>Product Service Code (PSC)</b></p>
+            <p class="margin-0 text-normal" data-test="psc-code">
+              {{ waiverData.data.psc.pscCode }}
+            </p>
+          </div>
+          <div class="desktop:grid-col-2 margin-y-1">
+            <p class="margin-0"><b>Request Status</b></p>
+            <p class="margin-0 text-normal">
+              {{ waiverData.data.requestStatus }}
+            </p>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template UsaAccordionContent>
+        <div
+          class="usa-prose padding-x-6 text-base-darker font-sans-sm margin-bottom-2"
+          data-test="accordion-content"
+        >
+          <div class="margin-bottom-2">
+            <div
+              [ngClass]="
+                waiverData.data.procurementTitle === ''
+                  ? 'margin-0 font-sans-lg text-bold text-base-light text-italic'
+                  : 'margin-0 font-sans-lg text-bold'
+              "
+            >
+              {{
+                waiverData.data.procurementTitle != ''
+                  ? waiverData.data.procurementTitle
+                  : 'Pending Title'
+              }}
+            </div>
+            <p class="margin-0 font-sans-xs">
+              {{ waiverData.data.summaryOfProcurement }}
+            </p>
+          </div>
+
+          <div
+            class="grid-row flex-row text-base-darker font-sans-sm margin-top-4"
+            style="justify-content: space-between"
+          >
+            <div class="tablet:grid-col tablet:padding-right-4">
+              <div class="margin-bottom-2">
+                <div class="margin-0 font-sans-xs text-bold">
+                  Waiver Rationale Summary
+                </div>
+                <p class="margin-0 font-sans-xs">
+                  {{
+                    waiverData.data.waiverRationaleSummary != ''
+                      ? waiverData.data.waiverRationaleSummary
+                      : 'N/A'
+                  }}
+                </p>
+              </div>
+
+              <div
+                class="margin-bottom-2 grid-row"
+                style="
+                  display: 'flex';
+                  flex-direction: 'row';
+                  justify-content: space-between;
+                "
+              >
+                <div class="desktop:grid-col margin-bottom-2">
+                  <div class="margin-0 font-sans-xs text-bold">
+                    Procurement Instrument Identifier (PIID)
+                  </div>
+                  <p class="margin-0 font-sans-xs">
+                    {{
+                      waiverData?.data?.piids?.length > 0
+                        ? mapPiids(waiverData?.data?.piids)
+                        : 'N/A'
+                    }}
+                  </p>
+                </div>
+
+                <div class="desktop:grid-col margin-bottom-2">
+                  <div class="margin-0 font-sans-xs text-bold">
+                    Solicitation ID
+                  </div>
+                  <p class="margin-0 font-sans-xs">
+                    {{
+                      waiverData.data?.solicitationId &&
+                      waiverData.data.solicitationId != ''
+                        ? waiverData.data.solicitationId
+                        : 'N/A'
+                    }}
+                  </p>
+                </div>
+
+                <div class="desktop:grid-col margin-bottom-2">
+                  <div class="margin-0 font-sans-xs text-bold">
+                    Procurement Stage
+                  </div>
+                  <p class="margin-0 font-sans-xs">
+                    {{
+                      waiverData.data.procurementStage != ''
+                        ? waiverData.data.procurementStage
+                        : 'N/A'
+                    }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="margin-bottom-2" data-test="omb-determination">
+                <div class="margin-0 font-sans-xs text-bold">
+                  OMB Determination
+                </div>
+                <p class="margin-0 font-sans-xs">
+                  {{
+                    waiverData.data?.ombDetermination &&
+                    waiverData.data.ombDetermination != ''
+                      ? waiverData.data.ombDetermination
+                      : 'N/A'
+                  }}
+                </p>
+              </div>
+              <div
+                class="margin-bottom-2"
+                *ngIf="
+                  waiverData.data.ombDetermination ===
+                  'conditionallyConsistentWithPolicy'
+                "
+              >
+                <div class="margin-0 font-sans-xs text-bold">
+                  Conditions Applicable to Consistency Determination
+                </div>
+                <p class="margin-0 font-sans-xs">
+                  {{
+                    waiverData.data
+                      .conditionsApplicableToConsistencyDetermination
+                  }}
+                </p>
+              </div>
+
+              <div class="margin-bottom-2">
+                <div class="margin-0 font-sans-xs text-bold">
+                  Expected Maximum Duration of the Proposed Waiver
+                </div>
+                <p class="margin-0 font-sans-xs">
+                  {{
+                    waiverData.data
+                      .expectedMaximumDurationOfTheRequestedWaiver != ''
+                      ? waiverData.data
+                          .expectedMaximumDurationOfTheRequestedWaiver
+                      : 'N/A'
+                  }}
+                </p>
+              </div>
+
+              <div class="margin-bottom-2">
+                <div class="margin-0 font-sans-xs text-bold">
+                  Waiver Coverage
+                </div>
+                <p class="margin-0 font-sans-xs">
+                  {{
+                    waiverData.data.waiverCoverage != ''
+                      ? waiverData.data.waiverCoverage
+                      : 'N/A'
+                  }}
+                </p>
+              </div>
+
+              <div class="margin-bottom-2 margin-right-2">
+                <div class="margin-0 font-sans-xs text-bold">
+                  Did / Will the solicitation include one of the standard BAA
+                  provisions announcing the agency’s intention to provide a
+                  price preference for domestic end products and construction
+                  material?
+                </div>
+                <p class="margin-0 font-sans-xs">
+                  {{
+                    waiverData.data.isPricePreferenceIncluded != ''
+                      ? waiverData.data.isPricePreferenceIncluded
+                      : 'N/A'
+                  }}
+                </p>
+              </div>
+            </div>
+            <!-- end col 1 -->
+            <div class="tablet:grid-col">
+              <div class="margin-bottom-2">
+                <div class="margin-0 font-sans-xs text-bold">Industry</div>
+                <p
+                  class="margin-0 font-sans-xs"
+                  data-test="industry-details-group"
+                >
+                  {{ waiverData.data.naics.NAICS_Title }} ({{
+                    waiverData.data.naics.NAICS_Code
+                  }})
+                </p>
+              </div>
+              <div class="margin-bottom-2">
+                <div class="margin-0 font-sans-xs text-bold">Product</div>
+                <p
+                  class="margin-0 font-sans-xs"
+                  data-test="product-details-group"
+                >
+                  {{ waiverData.data.psc.pscName }} ({{
+                    waiverData.data.psc.pscCode
+                  }})
+                </p>
+              </div>
+
+              <div
+                class="margin-bottom-2 grid-row"
+                style="
+                  display: 'flex';
+                  flex-direction: 'row';
+                  justify-content: space-between;
+                "
+              >
+                <div class="desktop:grid-col margin-bottom-2">
+                  <div class="margin-0 margin-right-2 font-sans-xs text-bold">
+                    Contracting Department
+                  </div>
+                  <p class="margin-0 margin-right-2 font-sans-xs">
+                    {{ waiverData.data.contractingOfficeAgencyName }} ({{
+                      waiverData.data.contractingOfficeAgencyId
+                    }})
+                  </p>
+                </div>
+                <div class="desktop:grid-col margin-bottom-2">
+                  <div class="margin-0 margin-right-2 font-sans-xs text-bold">
+                    Funding Agency
+                  </div>
+                  <p class="margin-0 font-sans-xs">
+                    {{ waiverData.data.fundingAgencyName }} ({{
+                      waiverData.data.fundingAgencyId
+                    }})
+                  </p>
+                </div>
+              </div>
+
+              <div class="margin-bottom-2">
+                <div class="margin-0 font-sans-xs text-bold">
+                  Was a sources sought or Request for Information issued?
+                </div>
+                <p class="margin-0 font-sans-xs">
+                  {{
+                    waiverData.data.sourcesSoughtOrRfiIssued != ''
+                      ? waiverData.data.sourcesSoughtOrRfiIssued
+                      : 'N/A'
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </usa-accordion-item>
+  </usa-accordion>
+</div>

@@ -5,15 +5,14 @@ layout: base
 <div id="main-content" class="usa-layout-docs usa-section padding-top-4">
   <div class="grid-container">
     <div class="grid-row grid-gap">
-      {% if page.sidenav == true %} 
-        {% include sidenav.html %}
-        <main class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
-            {{ content }}
-        </main>
+      {% if page.sidenav == true %} {% include sidenav.html %}
+      <main class="usa-layout-docs__main desktop:grid-col-9 usa-prose">
+        {{ content }}
+      </main>
       {% else %}
-        <main class="usa-layout-docs__main desktop:grid-col-12 usa-prose">
-            {{ content }}
-        </main>
+      <main class="usa-layout-docs__main desktop:grid-col-12 usa-prose">
+        {{ content }}
+      </main>
       {% endif %}
     </div>
   </div>

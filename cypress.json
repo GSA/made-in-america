@@ -1,0 +1,13 @@
+{
+  "ignoreTestFiles": ["**/__snapshots__/*", "**/__image_snapshots__/*"],
+  "video": false,
+  "chromeWebSecurity": false,
+  "experimentalSourceRewriting": true,
+  "env": {
+    "cypress-plugin-snapshots": {
+      "autoCleanUp": true,
+      "updateSnapshots": true,
+      "normalizeJson": true
+    }
+  }
+}

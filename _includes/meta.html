@@ -1,62 +1,57 @@
-{% assign title = site.title %}
-
-{% assign title = page.title | append: ' | ' | append: title %}
-
-{% assign desc = page.description | default: site.description %}
-
-{% assign meta_image_files = site.static_files | where: "image", true %}
-{% for file in meta_image_files %}
-  {% if file.name == site.meta.og.image %}
-    {% assign og-image = file.path %}
-  {% endif %}
-  {% if file.name == site.meta.twitter.image%}
-    {% assign twitter-image = file.path %}
-  {% endif %}
-{% endfor %}
-
-{% assign favicon_image_files = site.static_files | where: "image", true %}
+{% assign title = site.title %} {% assign title = page.title | append: ' | ' |
+append: title %} {% assign desc = page.description | default: site.description
+%} {% assign meta_image_files = site.static_files | where: "image", true %} {%
+for file in meta_image_files %} {% if file.name == site.meta.og.image %} {%
+assign og-image = file.path %} {% endif %} {% if file.name ==
+site.meta.twitter.image%} {% assign twitter-image = file.path %} {% endif %} {%
+endfor %} {% assign favicon_image_files = site.static_files | where: "image",
+true %}
 
 <head>
   <!-- Basic Page Needs
     ================================================== -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <!-- <meta name="robots" content="noindex, nofollow"> -->
   <!-- Mobile Specific Metas
     ================================================== -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Title and meta description
     ================================================== -->
   <title>{{title}}</title>
-  <meta property="og:title" content="{{title}}">
-  <meta name="description" content="{{desc}}">
-  <meta property="og:description" content="{{desc}}">
-  <meta property="og:image" content="{{ site.url }}{{og-image}}">
+  <meta property="og:title" content="{{title}}" />
+  <meta name="description" content="{{desc}}" />
+  <meta property="og:description" content="{{desc}}" />
+  <meta property="og:image" content="{{ site.url }}{{og-image}}" />
   <meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="article" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@{{site.meta.twitter.handle}}" />
   <meta name="twitter:title" content="{{title}}" />
-  <meta name="twitter:description" content="{{desc}}"/>
-  <meta property="twitter:image" content="{{ site.url }}{{twitter-image}}">
+  <meta name="twitter:description" content="{{desc}}" />
+  <meta property="twitter:image" content="{{ site.url }}{{twitter-image}}" />
 
   <link rel="canonical" href="{{ site.url }}{{ page.url }}" />
   <!-- Favicons
     ================================================== -->
-  {% for icon in site.favicons %}
+  {% for icon in site.favicons %} {% for file in favicon_image_files %} {% if
+  file.name == icon.name %} {% assign path = file.path %} {% endif %} {% endfor
+  %}
 
-     {% for file in favicon_image_files %}
-      {% if file.name == icon.name %}
-        {% assign path = file.path %}
-      {% endif %}
-     {% endfor %}
-
-    <link rel="{{ icon.rel | default: 'icon' }}" type="{{ icon.type }}"
-      {% if icon.sizes %}sizes="{{ icon.sizes }}"
-      {% endif %}href="{{ path | relative_url }}">
+  <link
+    rel="{{ icon.rel | default: 'icon' }}"
+    type="{{ icon.type }}"
+    {%
+    if
+    icon.sizes
+    %}sizes="{{ icon.sizes }}"
+    {%
+    endif
+    %}href="{{ path | relative_url }}"
+  />
 
   {% endfor %}
   <!-- CSS

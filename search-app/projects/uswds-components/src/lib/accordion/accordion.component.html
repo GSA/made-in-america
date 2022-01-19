@@ -1,0 +1,19 @@
+<ng-template ngFor let-panel [ngForOf]="panels">
+    <div role="heading" id="{{panel.id}}-header" class="mia-accordion__heading usa-accordion__heading border border-base-lighter radius-sm" [attr.aria-level]="headerLevel">
+      <button class="mia-accordion__button usa-accordion__button bg-transparent"
+        [UsaAccordionToggle]="panel"
+        (keydown)="onKeyDown($event, panel)"
+        >
+        {{panel.header}}
+        <ng-template [ngTemplateOutlet]="panel.headerTpl?.templateRef"></ng-template>
+      </button>
+    </div>
+    <section #panelContent id="{{panel.id}}" class="mia-accordion__content usa-accordion__content overflow-hidden border border-base-lighter radius-sm"
+      [@.disabled]="!animation"
+      [@bodyExpansion]="panel.isOpen ? 'expanded' : 'collapsed'"
+      (@bodyExpansion.start)="onBodyExpansionStart($event, panelContent)"
+      (@bodyExpansion.done)="onBodyExpansionEnd($event, panelContent)"
+      [attr.aria-labelledby]="panel.id + '-header'">
+        <ng-template [ngTemplateOutlet]="panel.contentTpl?.templateRef || null"></ng-template>
+    </section>
+</ng-template>

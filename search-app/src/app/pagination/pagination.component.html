@@ -1,0 +1,102 @@
+<nav aria-label="Pagination" class="usa-pagination">
+  <ul class="usa-pagination__list">
+    <!-- Hide when current == 1 -->
+    <li class="usa-pagination__item usa-pagination__arrow">
+      <a
+        data-test="previous-page"
+        href="javascript:void(0);"
+        class="usa-pagination__link usa-pagination__previous-page"
+        aria-label="Previous page"
+        [ngStyle]="{ visibility: current === 1 ? 'hidden' : 'initial' }"
+        (click)="goTo(current - 1)"
+      >
+        <svg class="usa-icon" aria-hidden="true" role="img">
+          <use xlink:href="../img/uswds-icons/chevron_left.svg"></use>
+        </svg>
+
+        <span class="usa-pagination__link-text"> Previous </span>
+      </a>
+    </li>
+
+    <li class="usa-pagination__item usa-pagination__page-no">
+      <a
+        data-test="first-page"
+        href="javascript:void(0);"
+        class="usa-pagination__button"
+        aria-label="Page 1"
+        [ngClass]="{ 'usa-current': current === 1 }"
+        [attr.aria-current]="current === 1 ? 'page' : null"
+        (click)="goTo(1)"
+      >
+        1
+      </a>
+    </li>
+
+    <li
+      class="usa-pagination__item usa-pagination__overflow"
+      role="presentation"
+      [ngClass]="{ 'display-none': current <= 3 }"
+      *ngIf="last > 4"
+    >
+      <span> … </span>
+    </li>
+
+    <li
+      class="usa-pagination__item usa-pagination__page-no"
+      *ngFor="let index of renderedButtons"
+    >
+      <a
+        href="javascript:void(0);"
+        class="usa-pagination__button"
+        attr.aria-label="Page {{ index }}"
+        [ngClass]="{ 'usa-current': current === index }"
+        [attr.aria-current]="current === index ? 'page' : null"
+        (click)="goTo(index)"
+      >
+        {{ index }}
+      </a>
+    </li>
+
+    <li
+      class="usa-pagination__item usa-pagination__overflow"
+      role="presentation"
+      [ngClass]="{ 'display-none': current >= last - 2 }"
+      *ngIf="last > 4"
+    >
+      <span> … </span>
+    </li>
+
+    <li class="usa-pagination__item usa-pagination__page-no">
+      <a
+        data-test="last-page"
+        href="javascript:void(0);"
+        class="usa-pagination__button"
+        attr.aria-label="Last page, page {{ last }}"
+        [ngClass]="{ 'usa-current': current === last }"
+        [attr.aria-current]="current === last ? 'page' : null"
+        (click)="goTo(last)"
+      >
+        {{ last }}
+      </a>
+    </li>
+
+    <!-- Hide when current == last -->
+    <li class="usa-pagination__item usa-pagination__arrow">
+      <a
+        data-test="next-page"
+        href="javascript:void(0);"
+        class="usa-pagination__link usa-pagination__next-page"
+        aria-label="Next page"
+        [ngStyle]="{ visibility: current === last ? 'hidden' : 'initial' }"
+        [attr.disabled]="current === last ? true : null"
+        (click)="goTo(current + 1)"
+      >
+        <span class="usa-pagination__link-text"> Next </span>
+
+        <svg class="usa-icon" aria-hidden="true" role="img">
+          <use xlink:href="../img/uswds-icons/chevron_right.svg"></use>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</nav>

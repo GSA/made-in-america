@@ -1,0 +1,36 @@
+<div class="grid-container padding-0 margin-bottom-3">
+  <div class="grid-row flex-align-end" style="justify-content: space-between">
+    <div class="tablet:grid-col-6">
+      <h1 class="margin-0 font-family-sans">Nonavailability Waivers</h1>
+      <p class="margin-0 margin-0 font-sans-sm">
+        Waivers reviewed by Made in America Office.
+      </p>
+    </div>
+    <uswds-dropdown
+      [id]="'filtering'"
+      [label]="'Filter By Status'"
+      [options]="filterOptions"
+      (optionChange)="handleSelectedOptions($event)"
+      data-test="filter-select"
+    >
+    </uswds-dropdown>
+    <uswds-dropdown
+      [id]="'sorting'"
+      [label]="'Sort By'"
+      [options]="sortOptions"
+      (optionChange)="handleSelectedOptions($event)"
+      data-test="sort-select"
+    >
+    </uswds-dropdown>
+  </div>
+</div>
+<div class="grid-container padding-0 margin-bottom-3">
+  <search-result [data]="displayedData"></search-result>
+
+  <usa-pagination
+    [current]="current"
+    [last]="last"
+    *ngIf="last > 1"
+    (movePage)="movePage($event)"
+  ></usa-pagination>
+</div>

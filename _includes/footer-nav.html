@@ -1,79 +1,97 @@
-  <!-- start mobile -->
-  <div class="footer-section-bottom tablet:display-none">
+<!-- start mobile -->
+<div class="footer-section-bottom tablet:display-none">
   <div class="usa-accordion">
-    {% for nav in site.footer_navigation %}
-      {% assign control = nav.name | downcase | slugify %}
-        <div class="usa-accordion__heading border-y border-base-lighter">
-          <button
-            class="usa-accordion__button bg-white"
-            aria-expanded="false"
-            aria-controls="footer-menu-{{ control }}"
+    {% for nav in site.footer_navigation %} {% assign control = nav.name |
+    downcase | slugify %}
+    <div class="usa-accordion__heading border-y border-base-lighter">
+      <button
+        class="usa-accordion__button bg-white"
+        aria-expanded="false"
+        aria-controls="footer-menu-{{ control }}"
+      >
+        {{ nav.name | strip }}
+      </button>
+    </div>
+    {% if nav.children %}
+    <div
+      id="footer-menu-{{ control }}"
+      class="usa-accordion__content usa-prose bg-base-lightest"
+    >
+      {% for subnav in nav.children %}
+      <ul class="add-list-reset">
+        <li>
+          <a
+            {%
+            if
+            subnav.ext
+            %}
+            href="{{ subnav.url }}"
+            class="usa-link text-no-underline usa-link--external"
+            rel="noreferrer"
+            target="_blank"
+            {%
+            else
+            %}
+            href="{{ site.baseurl }}{{ subnav.url }}"
+            class="usa-link text-no-underline"
+            {%
+            endif
+            %}
           >
-            {{ nav.name | strip }}
-          </button>
+            {{ subnav.name }}
+          </a>
+        </li>
+      </ul>
+      {% endfor %}
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+</div>
+<!-- end mobile -->
+<!-- start desktop -->
+<div
+  class="footer-section-bottom bg-base-lightest display-none tablet:display-block"
+>
+  <div class="grid-container">
+    <div class="grid-row padding-3">
+      {% for nav in site.footer_navigation %} {% assign control = nav.name |
+      downcase | slugify %}
+      <div class="tablet:grid-col">
+        <div
+          class="font-heading-md font-family-sans text-bold text-base-dark margin-bottom-1"
+        >
+          {{ nav.name | strip }}
         </div>
         {% if nav.children %}
-          <div
-            id="footer-menu-{{ control }}"
-            class="usa-accordion__content usa-prose bg-base-lightest"
-          >
+        <ul class="add-list-reset">
           {% for subnav in nav.children %}
-              <ul class="add-list-reset">
-                <li>
-                  <a
-                  {% if subnav.ext %}
-                  href="{{ subnav.url }}"
-                  class="usa-link text-no-underline usa-link--external"
-                  rel="noreferrer" target="_blank"
-                  {% else %}
-                  href="{{ site.baseurl }}{{ subnav.url }}"
-                  class="usa-link text-no-underline"
-                  {% endif %}
-                    >
-                    {{ subnav.name }}
-                  </a>
-                </li>
-              </ul>
+          <li>
+            <a
+              {%
+              if
+              subnav.ext
+              %}
+              href="{{ subnav.url }}"
+              class="usa-link text-no-underline usa-link--external"
+              rel="noreferrer"
+              target="_blank"
+              {%
+              else
+              %}
+              href="{{ site.baseurl }}{{ subnav.url }}"
+              class="usa-link text-no-underline"
+              {%
+              endif
+              %}
+              >{{ subnav.name }}</a
+            >
+          </li>
           {% endfor %}
-         </div>
+        </ul>
         {% endif %}
+      </div>
       {% endfor %}
     </div>
   </div>
-  <!-- end mobile -->
-  <!-- start desktop -->
-  <div class="footer-section-bottom bg-base-lightest display-none tablet:display-block">
-    <div class="grid-container">
-      <div class="grid-row padding-3">
-        {% for nav in site.footer_navigation %}
-        {% assign control = nav.name | downcase | slugify %}
-        <div class="tablet:grid-col">
-          <div
-            class="font-heading-md font-family-sans text-bold text-base-dark margin-bottom-1"
-          >
-            {{ nav.name | strip }}
-          </div>
-          {% if nav.children %}
-          <ul class="add-list-reset">
-            {% for subnav in nav.children %}
-            <li>
-              <a
-                {% if subnav.ext %}
-                href="{{ subnav.url }}"
-                class="usa-link text-no-underline usa-link--external"
-                rel="noreferrer" target="_blank"
-                {% else %}
-                href="{{ site.baseurl }}{{ subnav.url }}"
-                class="usa-link text-no-underline"
-                {% endif %}
-                >{{ subnav.name }}</a
-              >
-            </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-        </div>
-      {% endfor %}
-      </div>
-    </div>
-    <!-- end desktop -->
+  <!-- end desktop -->
+</div>

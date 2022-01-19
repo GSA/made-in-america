@@ -1,0 +1,73 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+_site
+.sass-cache
+.jekyll-metadata
+.bundle
+.jekyll-cache/
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+node_modules
+/node_modules
+**/**/node_modules
+package-lock.json
+**/**/package-lock.json
+
+# profiling files
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+
+*.njk
+*.woff*
+*.svg
+*.ttf
+*.png
+*.ico
+*.gif
+
+search-app/dist
+search-app/projects
+_includes/sidenav.html
+_assets/js/app
+_assets/css/premium.css
+_assets/js/main.js
+_assets/js/polyfills.js
+_assets/js/premium.min.js
+_assets/js/runtime.js

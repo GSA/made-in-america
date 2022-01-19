@@ -1,20 +1,24 @@
 <aside class="usa-layout-docs-sidenav desktop:grid-col-3 padding-bottom-4">
+    {% assign paths = page.url | split:'/' %}
   <nav>
     <ul class="usa-sidenav">
       <li class="usa-sidenav__item">
-        <a href="{{ site.baseurl }}/about/" {% if page.url == "/about/" %}class="usa-current"{% endif %}>Our Website</a>
-        {% if page.url == "/about/" %}
+        <a href="{{ site.baseurl }}/about/" {% if paths[1] == "about" %}class="usa-current"{% endif %}>Our Website</a>
+
+        {% if paths[1] == "about" %}
         <ul class="usa-sidenav__sublist">
           <li class="usa-sidenav__item">
             <a href="{{ site.baseurl }}/about/" {% if page.url == "/about/" %}class="usa-current"{% endif %}>About This Site</a>
+          </li>
+          <li class="usa-sidenav__item">
+            <a href="{{ site.baseurl }}/about/urgent-waivers/" {% if page.url == "/about/urgent-waivers/" %}class="usa-current"{% endif %}>Urgent Waivers</a>
           </li>
         </ul>
         {% endif %}
       </li>
       <li class="usa-sidenav__item">
-        {% assign policy_check = page.url | split:'/' %}
-        <a href="{{ site.baseurl }}/policies/accessibility/" {% if policy_check[1] == "policies" %}class="usa-current"{% endif %}>Policies </a>
-        {% if policy_check[1] == "policies" %}
+        <a href="{{ site.baseurl }}/policies/accessibility/" {% if paths[1] == "policies" %}class="usa-current"{% endif %}>Policies</a>
+        {% if paths[1] == "policies" %}
 
         <ul class="usa-sidenav__sublist">
           <li class="usa-sidenav__item">
@@ -33,9 +37,8 @@
         {% endif %}
     </li>
       <li class="usa-sidenav__item">
-        {% assign service_check = page.url | split:'/' %}
-        <a href="{{ site.baseurl }}/customer-service/support/" {% if service_check[1] == "customer-service" %}class="usa-current"{% endif %}>Customer Service</a>
-        {% if service_check[1] == "customer-service" %}
+        <a href="{{ site.baseurl }}/customer-service/support/" {% if paths[1] == "customer-service" %}class="usa-current"{% endif %}>Customer Service</a>
+        {% if paths[1] == "customer-service" %}
         <ul class="usa-sidenav__sublist">
           <li class="usa-sidenav__item">
             <a href="{{ site.baseurl }}/customer-service/support/" {% if page.url == "/customer-service/support/" %}class="usa-current"{% endif %}>Government Customer Support</a>

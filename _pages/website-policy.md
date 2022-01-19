@@ -3,7 +3,7 @@ permalink: /policies/website-policy/
 layout: page
 title: Policies - Website Policy
 sidenav: true
-description: "This page explains website policies, procedures, and required links for GSA websites."
+description: 'This page explains website policies, procedures, and required links for GSA websites.'
 ---
 
 # Website Policy

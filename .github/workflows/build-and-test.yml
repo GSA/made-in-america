@@ -43,3 +43,9 @@ jobs:
 
       - name: Run htmlproofer.
         run: npm run htmlproofer
+
+      - name: Run e2e test.
+        run: npm run test
+
+      - name: Run search-app test.
+        run: cd search-app && npm install && npm run test

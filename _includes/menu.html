@@ -1,16 +1,30 @@
-{% comment %}
-To modify the menu system, you are welcome to edit this HTML directly or you can look inside _config.yml
-where we provide an easy way to manage your navigation system
-{% endcomment %}
+{% comment %} To modify the menu system, you are welcome to edit this HTML
+directly or you can look inside _config.yml where we provide an easy way to
+manage your navigation system {% endcomment %}
 
 <header class="usa-header usa-header--extended" role="banner">
-  <div class="usa-navbar padding-x-0 flex-align-center" style="display: flex; justify-content: space-between;">
+  <div
+    class="usa-navbar padding-x-0 flex-align-center"
+    style="display: flex; justify-content: space-between"
+  >
     {% include logo.html %}
-    <a class="mia-mobile-menu-btn desktop:display-none" href="{{ site.baseurl }}/waivers/">View Waivers</a>
-    <nav id="menu-navigation" aria-label="Menu navigation" role="navigation" class="usa-nav" style="width: auto; border: none">
-        <div class="usa-nav__inner display:none desktop:display-block">
-            <a class="usa-button" href="{{ site.baseurl }}/waivers/">View Waivers</a>
-        </div>
-      </nav>
+    <a
+      class="mia-mobile-menu-btn desktop:display-none"
+      href="{{ site.baseurl }}/waivers/"
+      >View Waivers</a
+    >
+    <nav
+      id="menu-navigation"
+      aria-label="Menu navigation"
+      role="navigation"
+      class="usa-nav"
+      style="width: auto; border: none"
+    >
+      <div class="usa-nav__inner display:none desktop:display-block">
+        <a class="usa-button" href="{{ site.baseurl }}/waivers/"
+          >View Waivers</a
+        >
+      </div>
+    </nav>
   </div>
 </header>

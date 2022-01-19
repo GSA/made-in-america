@@ -20,21 +20,21 @@
 title: Made in America
 email: MadeInAmerica@omb.eop.gov
 description: >- # this means to ignore newlines until "baseurl:"
-  Made in America homepage. Information about Made in America policies, the Made in America executive order, doing business with the U.S. Government, and non-availability waivers.
-baseurl: "" # the subpath of your site, e.g. /blog
+  Made in America homepage. Information about Made in America policies, the Made in America executive order, doing business with the U.S. Government, and nonavailability waivers.
+baseurl: '' # the subpath of your site, e.g. /blog
 # url: "https://example.gov" # the base hostname & protocol for your site, e.g. https://example.com.
-  # Required to support the jekyll-sitemap plugin below.
-  # Uncomment the url line when ready to push to production. If using different branches for multiple
-  # custom domains, edit this url parameter in the relevant branch to match the relevant custom domain.
-url: "https://www.madeinamerica.gov"
-logo: "logo.svg"
-logo_alt_text: "Shield with stars and stripes."
+# Required to support the jekyll-sitemap plugin below.
+# Uncomment the url line when ready to push to production. If using different branches for multiple
+# custom domains, edit this url parameter in the relevant branch to match the relevant custom domain.
+url: 'https://www.madeinamerica.gov'
+logo: 'logo.svg'
+logo_alt_text: 'Shield with stars and stripes.'
 meta:
   og:
-    image: "mia_og_card.png"
+    image: 'mia_og_card.png'
   twitter:
     handle: 18F
-    image: "mia_twitter_card.png"
+    image: 'mia_twitter_card.png'
 
 #################################################################
 #
@@ -91,6 +91,8 @@ footer_navigation:
     children:
       - name: About This Site
         url: /about/
+      - name: Urgent Waivers
+        url: /about/urgent-waivers/
   - name: Policies
     children:
       - name: Accessibility
@@ -195,11 +197,20 @@ plugins:
 
 defaults:
   - scope:
-      path: "images"
+      path: 'images'
     values:
       image: true
+  - scope:
+      path: 'urgent-waivers'
+    values:
+      image: true
+  - scope:
+      path: 'waiver-form/*'
+    values:
+      sitemap: false
 
 exclude:
+  - search-app
   - package.json
   - package-lock.json
   - README.md
@@ -212,6 +223,7 @@ exclude:
   - Gemfile.lock
 
 assets:
+  digest: false
   sources:
     - favicons
     - node_modules/uswds/dist/img

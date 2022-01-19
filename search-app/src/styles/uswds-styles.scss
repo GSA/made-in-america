@@ -1,0 +1,9 @@
+@import './base-styles';
+
+$theme-image-path: '~node_modules/uswds/src/img';
+$theme-font-path: '~node_modules/uswds/src/fonts';
+$theme-show-notifications: false;
+$theme-accordion-border-width: 1px;
+$theme-accordion-border-radius: 20px;
+
+@import 'uswds';
