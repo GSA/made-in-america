@@ -15,6 +15,12 @@ describe('results display', () => {
     cy.get('[data-test="filter-select"] select').children().as('filter-options')
     cy.get('usa-accordion').children().as('accordion-elements')
   })
+  it('check term Non-availability is not present on waiver page', () => {
+    cy.get('[data-test="waiver-page-content"]')
+      .should('not.contain.text', 'Non-availability')
+      .should('not.contain.text', 'non-availability')
+    // this test provides covearge for the waivers page, since it is a dymanic page the test attributes have been added to areas of the page that have content. This test will skip over waivers present on the page since those are changing based on submissions.  Please see 'non-availability-check.spec.js' for full site coverage
+  })
   it('accordion should open when clicked', () => {
     cy.get('[data-test="accordion-header"]')
       .click({ multiple: true })
