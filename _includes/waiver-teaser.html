@@ -5,51 +5,52 @@
     aria-expanded="false"
     aria-controls="{{include.id}}"
   >
-  <div class="grid-row flex-row">
-    <div class="desktop:grid-col-4 desktop:margin-right-4 margin-y-1">
-      <p class="margin-0"><b>Procurement Title</b></p>
-      <p class="margin-0 text-normal">
-        {% if title != ''%}
-        {{ include.title }}
-        {% else %}
-        <span class="text-base-light text-italic">Pending Title</span>
-        {% endif%}
-      </p>
-      <p class="margin-top-3">
-        {% if requestStatus == 'Submitted' %}
-        Submitted:
-        <span class="margin-0 text-normal">
-          {{ include.created | date: "%B" }}
-          {{ include.created | date: "%d" | plus:'0' }}, 
-          {{ include.created | date: "%Y" }}
-        </span>
-        {% else %}
-        Reviewed:
-        <span class="margin-0 text-normal">
-          {{ include.modified | date: "%B" }}
-          {{ include.modified | date: "%d" | plus:'0' }}, 
-          {{ include.modified | date: "%Y" }}
-        </span>
-        {% endif%}
-      </p>
-    </div>
-    <div class="desktop:grid-col-4 desktop:margin-right-4 margin-y-1 ">
-      <p class="margin-0"><b>Contracting Office Agency Name</b></p>
-      <p class="margin-0 text-normal">
-        {{ include.contracting_agency_name }}
+    <div class="grid-row flex-row">
+      <div class="desktop:grid-col-4 desktop:margin-right-4 margin-y-1">
+        <p class="margin-0"><b>Procurement Title</b></p>
+        <p class="margin-0 text-normal">
+          {% if title != ''%} {{ include.title }} {% else %}
+          <span class="text-base-light text-italic">Pending Title</span>
+          {% endif%}
         </p>
+        <p class="margin-top-3">
+          {% if requestStatus == 'Submitted' %} Submitted:
+          <span class="margin-0 text-normal">
+            {{ include.created | date: "%B" }} {{ include.created | date: "%d" |
+            plus:'0' }}, {{ include.created | date: "%Y" }}
+          </span>
+          {% else %} Reviewed:
+          <span class="margin-0 text-normal">
+            {{ include.modified | date: "%B" }} {{ include.modified | date: "%d"
+            | plus:'0' }}, {{ include.modified | date: "%Y" }}
+          </span>
+          {% endif %}
+        </p>
+      </div>
+      <div class="desktop:grid-col-4 desktop:margin-right-4 margin-y-1">
+        <p class="margin-0"><b>Contracting Office Agency Name</b></p>
+        <p class="margin-0 text-normal">
+          {{ include.contracting_agency_name }}
+        </p>
+      </div>
+      <div class="desktop:grid-col-3 margin-y-1">
+        <p class="margin-0"><b>Product Service Code (PSC)</b></p>
+        <p class="margin-0 text-normal">{{ include.psc | default: 'N/A' }}</p>
+      </div>
     </div>
-    <div class="desktop:grid-col-3 margin-y-1">
-      <p class="margin-0"><b>Product Service Code (PSC)</b></p>
-      <p class="margin-0 text-normal">{{ include.psc | default: 'N/A' }}</p>
-    </div>
-  </div>
   </button>
 </div>
-<div id="{{include.id}}" class="usa-accordion__content usa-prose border border-base-lighter radius-sm">
-  <div class="usa-prose padding-x-4 text-base-darker font-sans-sm margin-bottom-2">
+<div
+  id="{{include.id}}"
+  class="usa-accordion__content usa-prose border border-base-lighter radius-sm"
+>
+  <div
+    class="usa-prose padding-x-4 text-base-darker font-sans-sm margin-bottom-2"
+  >
     <div class="margin-0 font-sans-lg text-bold">Summary of Procurement</div>
-    <div class="margin-0 font-sans-xs">{{include.synopsis | default: 'N/A'}}</div>
+    <div class="margin-0 font-sans-xs">
+      {{include.synopsis | default: 'N/A'}}
+    </div>
 
     <div
       class="grid-row flex-row text-base-darker font-sans-sm margin-top-4"
@@ -57,57 +58,89 @@
     >
       <div class="tablet:grid-col-6 tablet:padding-right-4">
         <div class="margin-bottom-2">
-          <div class="margin-0 font-sans-xs text-bold">Contracting Office Agency ID</div>
-          <p class="margin-0 font-sans-xs">{{include.contracting_agency_id | default: 'N/A'}}</p>
+          <div class="margin-0 font-sans-xs text-bold">
+            Contracting Office Agency ID
+          </div>
+          <p class="margin-0 font-sans-xs">
+            {{include.contracting_agency_id | default: 'N/A'}}
+          </p>
         </div>
         <div class="margin-bottom-2">
           <div class="margin-0 font-sans-xs text-bold">Funding Agency ID</div>
-          <p class="margin-0 font-sans-xs">{{include.funding_agency_id | default: 'N/A'}}</p>
+          <p class="margin-0 font-sans-xs">
+            {{include.funding_agency_id | default: 'N/A'}}
+          </p>
         </div>
         <div class="margin-bottom-2">
           <div class="margin-0 font-sans-xs text-bold">Procurement Stage</div>
-          <p class="margin-0 font-sans-xs">{{include.procurement_stage | default: 'N/A'}}</p>
+          <p class="margin-0 font-sans-xs">
+            {{include.procurement_stage | default: 'N/A'}}
+          </p>
         </div>
         <div class="margin-bottom-2">
           <div class="margin-0 font-sans-xs text-bold">
             North American Industry Classification System (NAICS)
           </div>
-          <p class="margin-0 font-sans-xs">{{include.naics | default: 'N/A'}}</p>
+          <p class="margin-0 font-sans-xs">
+            {{include.naics | default: 'N/A'}}
+          </p>
         </div>
         <div class="margin-bottom-2 margin-right-2">
-          <div class="margin-0 font-sans-xs text-bold">Did / Will the solicitation include one of the standard BAA provisions (e.g., 52-225-1, Buy American- Supplies, 52.225–9, Buy American—Construction Materials) announcing the agency’s intention to provide a price preference for domestic end products and construction material?</div>
-          <p class="margin-0 font-sans-xs">{{include.standard_baa_provision | default: 'N/A'}}</p>
+          <div class="margin-0 font-sans-xs text-bold">
+            Did / Will the solicitation include one of the standard BAA
+            provisions (e.g., 52-225-1, Buy American- Supplies, 52.225–9, Buy
+            American—Construction Materials) announcing the agency’s intention
+            to provide a price preference for domestic end products and
+            construction material?
+          </div>
+          <p class="margin-0 font-sans-xs">
+            {{include.standard_baa_provision | default: 'N/A'}}
+          </p>
         </div>
       </div>
       <!-- end col 1 -->
       <div class="tablet:grid-col-6">
         <div class="margin-bottom-2">
-          <div class="margin-0 font-sans-xs text-bold">Contracting Office Agency Name</div>
+          <div class="margin-0 font-sans-xs text-bold">
+            Contracting Office Agency Name
+          </div>
           <p class="margin-0 font-sans-xs">
             {{ include.contracting_agency_name }}
           </p>
         </div>
         <div class="margin-bottom-2">
           <div class="margin-0 font-sans-xs text-bold">Funding Agency Name</div>
+          <p class="margin-0 font-sans-xs">{{ include.funding_agency_name }}</p>
+        </div>
+        <div class="margin-bottom-2">
+          <div class="margin-0 font-sans-xs text-bold">
+            Expected Maximum Duration of the Requested Waiver
+          </div>
           <p class="margin-0 font-sans-xs">
-            {{ include.funding_agency_name }}
-           </p>
+            {{include.maximum_duration | default: 'N/A'}}
+          </p>
         </div>
         <div class="margin-bottom-2">
-          <div class="margin-0 font-sans-xs text-bold">Expected Maximum Duration of the Requested Waiver</div>
-          <p class="margin-0 font-sans-xs">{{include.maximum_duration | default: 'N/A'}}</p>
+          <div class="margin-0 font-sans-xs text-bold">
+            Was a sources sought or Request for Information issued?
+          </div>
+          <p class="margin-0 font-sans-xs">
+            {{include.information_issued | default: 'N/A'}}
+          </p>
         </div>
         <div class="margin-bottom-2">
-          <div class="margin-0 font-sans-xs text-bold">Was a sources sought or Request for Information issued?</div>
-          <p class="margin-0 font-sans-xs">{{include.information_issued | default: 'N/A'}}</p>
-        </div>
-        <div class="margin-bottom-2">
-          <div class="margin-0 font-sans-xs text-bold">Waiver Rationale Summary</div>
-          <p class="margin-0 font-sans-xs">{{include.waiver_rationale_summary | default: 'N/A'}}</p>
+          <div class="margin-0 font-sans-xs text-bold">
+            Waiver Rationale Summary
+          </div>
+          <p class="margin-0 font-sans-xs">
+            {{include.waiver_rationale_summary | default: 'N/A'}}
+          </p>
         </div>
         <div class="margin-bottom-2">
           <div class="margin-0 font-sans-xs text-bold">Waiver Coverage</div>
-          <p class="margin-0 font-sans-xs">{{include.waiver_coverage | default: 'N/A'}}</p>
+          <p class="margin-0 font-sans-xs">
+            {{include.waiver_coverage | default: 'N/A'}}
+          </p>
         </div>
       </div>
     </div>
