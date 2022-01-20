@@ -3,7 +3,7 @@
     <usa-accordion-item *ngFor="let waiverData of data">
       <ng-template UsaAccordionHeader>
         <div
-          class="grid-row flex-row padding-x-3 padding-y-1"
+          class="grid-row flex-row padding-x-4 padding-y-1"
           data-test="accordion-header"
         >
           <div class="desktop:grid-col-2 desktop:margin-right-4 margin-y-1">
@@ -22,6 +22,24 @@
                   : 'Pending Title'
               }}
             </p>
+            <div class="margin-top-1">
+              <div
+                [ngClass]=""
+                *ngIf="
+                  waiverData.data.requestStatus == Submitted;
+                  else reviewed
+                "
+              >
+                Submitted Date: {{ waiverData.created }}
+              </div>
+
+              <ng-template #reviewed>
+                Reviwed Date:
+                <p class="margin-0 text-normal">
+                  {{ waiverData.modified | date: 'mediumDate' }}
+                </p>
+              </ng-template>
+            </div>
           </div>
           <div class="desktop:grid-col-3 desktop:margin-right-4 margin-y-1">
             <p class="margin-0"><b>Contracting Department</b></p>

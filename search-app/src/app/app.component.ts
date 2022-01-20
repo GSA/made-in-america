@@ -1,3 +1,6 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable import/prefer-default-export */
 import { Component, OnInit } from '@angular/core'
 import { ThemeSwitcherService } from './shared/theme-switcher/theme-switcher.service'
 import { environment } from '../environments/environment'
@@ -9,13 +12,21 @@ import { environment } from '../environments/environment'
 })
 export class AppComponent implements OnInit {
   title = 'usa-components'
+
   data = []
+
   filteredData = []
+
   displayedData = []
+
   filter = ''
+
   sort = ''
+
   filterOptions = []
+
   last = 0
+
   sortOptions = [
     {
       label: 'Most Recent',
@@ -26,12 +37,15 @@ export class AppComponent implements OnInit {
       value: 'alphabetical',
     },
   ]
+
   selectedOptions = {
     filter: this.filter,
     sort: this.sort,
   }
+
   current = 1
 
+  // eslint-disable-next-line no-useless-constructor
   constructor(private themeSwitcherService: ThemeSwitcherService) {}
 
   ngOnInit() {
@@ -50,7 +64,7 @@ export class AppComponent implements OnInit {
           Array.prototype.map
             .call(
               atob(content),
-              c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)
+              c => `%${`00${c.charCodeAt(0).toString(16)}`.slice(-2)}`
             )
             .join('')
         )
@@ -67,6 +81,7 @@ export class AppComponent implements OnInit {
       })
   }
 
+  // eslint-disable-next-line class-methods-use-this
   createFilters(data) {
     const uniqueRequestStatus = Array.from(
       new Set(data.map(d => d.data.requestStatus))
@@ -85,6 +100,7 @@ export class AppComponent implements OnInit {
     this.displayedData = this.filteredData.slice(0, 10)
   }
 
+  // eslint-disable-next-line class-methods-use-this
   sortAlphabetically(data) {
     return data
       .slice()
@@ -101,6 +117,7 @@ export class AppComponent implements OnInit {
       )
   }
 
+  // eslint-disable-next-line class-methods-use-this
   sortChronologically(data) {
     return data
       .slice()
