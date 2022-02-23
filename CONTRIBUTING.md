@@ -65,7 +65,7 @@ Additionally, branch names should follow the following convention
 
 an example of a properly formatted branch name looks like this,
 
-`feature/appends-icon-TKT-634`
+`feature/appends-icon-TKT-633`
 
 ### Code Review
 
