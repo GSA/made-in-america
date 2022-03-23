@@ -208,6 +208,10 @@ defaults:
       path: 'waiver-form/*'
     values:
       sitemap: false
+  - scope:
+      path: 'urgent-form/*'
+    values:
+      sitemap: false
 
 exclude:
   - search-app
