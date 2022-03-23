@@ -41,7 +41,7 @@
     "@18f/identity-stylelint-config": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.13.0",
-    "cypress": "^9.5.1",
+    "cypress": "^9.5.2",
     "eslint": "^8.10.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.4.0",
