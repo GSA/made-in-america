@@ -33,7 +33,7 @@
     ]
   },
   "dependencies": {
-    "uswds": "~2.13.1",
+    "uswds": "~2.13.2",
     "cypress-plugin-snapshots": "^1.4.4",
     "cy-verify-downloads": "0.0.6"
   },
