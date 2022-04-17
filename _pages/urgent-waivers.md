@@ -29,3 +29,7 @@ For additional information on these waivers, please contact the issuing agency u
   - [DOD Urgent Requirements Report COVID-19 Rapid Antigen Tests 0006](/urgent-waivers/DOD-Urgent-Requirements-Report-COVID-19-Rapid-Antigen-Tests-0006.xlsx)
 
   - [DOD Urgent Requirements Report COVID-19 Rapid Antigen Tests 0009](/urgent-waivers/DoD-Urgent-Requirements-Report-COVID-19-Rapid-Antigen-Tests-0009.xlsx)
+
+- April 25, 2022
+
+  - [RF Absorbers URGENT REQUIRMENT REPORT](/urgent-waivers/RF-Absorbers-URGENT-REQUIRMENT-REPORT.xlsx)
