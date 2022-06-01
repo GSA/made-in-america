@@ -35,7 +35,7 @@
   "dependencies": {
     "uswds": "~2.13.3",
     "cypress-plugin-snapshots": "^1.4.4",
-    "cy-verify-downloads": "0.1.5"
+    "cy-verify-downloads": "0.1.8"
   },
   "devDependencies": {
     "@18f/identity-stylelint-config": "^1.0.0",
