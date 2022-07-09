@@ -49,7 +49,7 @@ The Build America, Buy America Act requires that all of the iron, steel, manufac
     <td>Department of Justice</td>
   </tr> 
   <tr>
-    <td>Department of Labor</td>
+   <td><a target="_blank" href="https://www.dol.gov/agencies/oasam/centers-offices/office-of-the-senior-procurement-executive/buy-america-waivers">Department of Labor</a></td>
   </tr> 
   <tr>
     <td>Department of State</td>
