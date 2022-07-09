@@ -87,7 +87,7 @@ export class AppComponent implements OnInit {
       sort: 'recent',
     }
     const requestURL = window.location.pathname.includes('/waivers/')
-      ? `https://api.github.com/repos/GSA/made-in-america-data/contents/waivers-data.json?ref=${environment.dataBranch}`
+      ? `https://api.github.com/repos/GSA/made-in-america-data/contents/waivers-data-updated.json?ref=${environment.dataBranch}`
       : `https://api.github.com/repos/GSA/made-in-america-data/contents/urgent-waivers-data.json?ref=${environment.urgentBranch}`
 
     const waiversCsvUrl = `https://api.github.com/repos/GSA/made-in-america-data/contents/waivers.csv?ref=${environment.dataBranch}`
